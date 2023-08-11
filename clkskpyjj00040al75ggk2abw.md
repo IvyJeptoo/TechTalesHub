@@ -4,7 +4,7 @@ datePublished: Tue Aug 01 2023 17:29:09 GMT+0000 (Coordinated Universal Time)
 cuid: clkskpyjj00040al75ggk2abw
 slug: infrastructure-as-code-networking-infrastructure
 ogImage: https://cdn.hashnode.com/res/hashnode/image/upload/v1690912584419/769ef275-4521-43fc-ba09-3b42ff62885f.png
-tags: aws, iac
+tags: aws, amazon-web-services, networking, infrastructure-as-code, iac
 
 ---
 
@@ -18,43 +18,35 @@ Below is an example of a diagram that we will be using:
 
 ### Diagram components.
 
-1. **AWS Cloud**
-    
+**a) AWS Cloud**
 
 This is your AWS account and every other resource it can get access to.
 
-1. **Virtual Private Cloud(VPC)**
-    
+**b) Virtual Private Cloud(VPC)**
 
 The VPC acts as a private network and it provides a private IP address for networking resources. We can think of it as a logical container for all the resources that we will be creating. The IP address range is 10.0.0.0/16 meaning that it can accommodate up to 65,536 IP addresses.
 
-1. **Internet Gateway**
-    
+**c) Internet Gateway**
 
 An internet gateway is a bridge between the VPC and the internet in the sense that it is the entry and exit point for traffic between the two. It does this by allowing resources within the VPC to communicate with the internet and also receives incoming traffic from the internet.
 
-1. **Public Subnet**
-    
+**d) Public Subnet**
 
 Public subnets receive traffic from everywhere on the server, which means the instances placed in this subnet have public IP addresses and can be accessed directly from the internet. It has an IP address range of 10.0.1.0/24 which allows up to 256 IP addresses.
 
-1. **Private Subset**
-    
+**e) Private Subset**
 
 Just as the Public subset the private subset accommodates up to 256 IP addresses but it has an IP address range of 10.0.0.2.0/24. It is normally used when hiding internal resources from the internet since the instances in this subset do not have public IP addresses.
 
-1. **NAT Gateway.**
-    
+**f) NAT Gateway.**
 
 The NAT(Network Address Translation) Gateway provides ways in which the private network and server communicate it does this by allowing the private subset to communicate with the internet and at the same time prevents incoming connections from the internet. It acts as a middleman that handles communication.
 
-1. **Public Route Table**
-    
+**g) Public Route Table**
 
 Route Tables contain a set of rules that determine the direction of the network traffic within the VPC. The Public Route Table is associated with the Public Subnet and has a route that sends internet-bound traffic to the Internet Gateway. Public Route Table allows the direct reach of the Public Subnet Instances to the Internet.
 
-1. **Private Route Table**
-    
+**h) Private Route Table**
 
 Unlike the Public Route Table, the Private is associated with the Private Subnet and has a route that sends internet-bound traffic to the NAT Gateway. By this, the Private Route Table ensures that the Private Subnet Instances have access to the Internet through the NAT Gateway.
 
